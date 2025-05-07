@@ -2,3 +2,32 @@
 #div-principal {
     padding: 0;
 }
+
+.input-style {
+    background-color: #C49A50!important;
+}
+
+.input-style::placeholder {
+    color: #fff!important;
+}
+
+.btn-style {
+    background-color: #C49A50!important;
+    color: #fff!important;
+}
+
+#div-banner {
+    height: 100vh;
+    background-image: url('/static/img/Banner.png');
+    background-size: cover;
+    background-position: left center; /* mantém lado esquerdo fixo */
+    background-repeat: no-repeat;
+    position: relative;
+  }
+  
+  #btn-banner {
+    position: absolute;
+    top: 55%;
+    left: 5.5%;
+    transform: translateY(-50%);
+  }

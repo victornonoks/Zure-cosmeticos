@@ -16,7 +16,10 @@ def destaque4(request):
     return render(request, 'zure_app/destaque4.html')
 
 def cadastro(request):
-    return render(request, 'zure_app/cadastro.html')
+    return render(request, 'zure_app/account-cadastro.html')
 
 def login(request):
-    return render(request, 'zure_app/login.html')
+    return render(request, 'zure_app/account-login.html')
+
+def carrinho (request):
+    return render(request, 'zure_app/carrinho.html')
