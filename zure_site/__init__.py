@@ -1,1 +1,0 @@
-print("Pacote init foi requisitado")
