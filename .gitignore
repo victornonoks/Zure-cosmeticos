@@ -1,0 +1,45 @@
+# Dependencias do node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+#ignorar arquivos e pastas temporarios
+pycache/
+*.py[cod]
+*.pyo
+
+#ignore arquivos de banco de dados
+db.sqlite3
+
+# Ignore Python virtual environments
+venv/
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# Build directories
+dist/
+build/
+out/
+
+# Environment variables
+.env
+.env.*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE specific files
+.vscode/
+.idea/
+*.iml
+
+# Temporary files
+*.tmp
+*.swp
+*.bak
+*.orig
