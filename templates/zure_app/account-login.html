@@ -2,6 +2,7 @@
 {% load static %}
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}Zure Cosméticos{% endblock %}</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
@@ -9,7 +10,7 @@
   <link href="{% static 'css/style.css' %}" rel="stylesheet">
 </head>
 <body>
-<div class="container-fluid">
+<div class="container-fluid" id="div-principal">
     {% block content %}
     {% comment %} Seção da navbar {% endcomment %}
     <nav class=" container-fluid fixed-top navbar navbar-expand-lg navbar-light bg-light"> 
@@ -39,13 +40,49 @@
               <a href="{% url 'login'%}" class="text-dark" style="font-size: 1.5rem;">
                 <i class="bi bi-person-circle"></i>
               </a>
-              <a href="{% url 'carrinho' %}" class="text-dark" style="font-size: 1.5rem;">
-                <i class="bi bi-basket2-fill"></i>
-              </a>
+                <a href="#" class="text-dark position-relative" id="cart-toggle" style="font-size: 1.5rem;">
+                  <i class="bi bi-basket2-fill"></i>
+                  <span class="cart-count">
+                    {{ carrinho.itens|length }}
+                  </span>
+                </a>
             </div>            
         </div> 
       </div> 
     </nav>
+
+    {% comment %} Seção offcanvas do carrinho {% endcomment %}
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartSidebar" aria-labelledby="cartSidebarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="cartSidebarLabel">Carrinho de compras</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+      </div>
+      <div class="offcanvas-body">
+        {% for item in carrinho.itens %}
+        <div class="d-flex justify-content-between align-items-start border-bottom pb-3 mb-3">
+          <div class="d-flex gap-3">
+            <img src="{{ item.produto.foto.url }}" alt="{{ item.produto.nome }}" style="width: 60px; height: auto;">
+              <div>
+                <p class="mb-1 fw-semibold">{{ item.produto.nome }}</p>
+                <div class="input-group input-group-sm" style="max-width: 90px;">
+                  <button class="btn btn-outline-secondary btn-sm">−</button>
+                  <input type="text" class="form-control text-center" value="{{ item.quantidade }}">
+                  <button class="btn btn-outline-secondary btn-sm">+</button>
+                </div>
+              </div>
+          </div>
+        <div class="fw-bold">R$ {{ item.subtotal }}</div>
+        </div>
+        {% endfor %}
+
+          <div class="mt-4">
+            <p class="fw-bold text-end">Subtotal: R$ {{ carrinho.total }}</p>
+            <a href="{% url 'home' %}" class="btn btn-style w-100">Finalizar Compra</a>
+          </div>
+      </div>
+    </div>
+    {% comment %} Final da seção offcanvas do carrinho {% endcomment %}
+
 
     {% comment %} Seção de login {% endcomment %}
     <div class="d-flex justify-content-start align-items-center h-100">
@@ -107,6 +144,7 @@
     </footer>
     {%endblock%}
 </div>
+<script src="{% static 'js/script.js' %} " rel="script"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

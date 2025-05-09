@@ -1,7 +1,9 @@
 from django.shortcuts import render
+from .models import Produto
 
 def home(request):
-    return render(request, 'zure_app/home.html')
+    destaques = Produto.objects.filter(destaques=True)[:4]
+    return render(request, 'zure_app/home.html', {'destaques': destaques})
 
 def destaque1(request):
     return render(request, 'zure_app/destaque1.html')

@@ -16,6 +16,26 @@
     color: #fff!important;
 }
 
+.cart-count {
+  position: absolute;
+  top: -8px;
+  left: 14px;
+  background-color: #C49A50;
+  color: #fff;
+  font-size: 0.55rem;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  line-height: 1;
+}
+
+#cart-count-home {
+    top: -2px!important;
+}
+
 #div-banner {
     height: 100vh;
     background-image: url('/static/img/Banner.png');
