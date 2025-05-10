@@ -1,0 +1,195 @@
+<!-- base.html - HTML para a página base -->
+<!DOCTYPE html>
+<html lang="pt-br">
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Zure Cosméticos{% endblock %}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+<body>
+  <div class="container-fluid" id="div-principal">
+    {% block content %}
+    {% comment %} Seção da navbar {% endcomment %}
+   <nav class=" container-fluid fixed-top navbar navbar-expand-lg navbar-light bg-light"> 
+      <div class="container"> 
+        <button class="navbar-toggler border-0 ms-auto shadow-none" type="button" 
+          data-bs-toggle="collapse" 
+          data-bs-target="#navbarContent" 
+          aria-controls="navbarContent" 
+          aria-expanded="false" 
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent"> 
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
+              <li class="nav-item"><a class="nav-link" href="{% url 'home'%}">Inicio</a></li> 
+              <li class="nav-item"><a class="nav-link" href="#">Sobre</a> </li> 
+              <li class="nav-item"> <a class="nav-link" href="#">Destaques</a> </li> 
+              <li class="nav-item"> <a class="nav-link" href="#">Produtos</a> </li> 
+              <li class="nav-item"> <a class="nav-link" href="#">Fundadores</a></li>
+            </ul>
+            <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-lg-end gap-4 w-100 w-lg-auto">
+              <input type="search" 
+              class="form-control rounded-pill col-4 input-style" 
+              placeholder="O que você procura?" 
+              style="width: 100%; max-width: 350px;"/>
+              <a href="{% url 'login'%}" class="text-dark" style="font-size: 1.5rem;">
+                <i class="bi bi-person-circle"></i>
+              </a>
+              <a href="#" class="text-dark position-relative" id="cart-toggle" style="font-size: 1.5rem;">
+                <i class="bi bi-basket2-fill"></i>
+                <span class="cart-count" id="cart-count-home">
+                  {% comment %} Exibe a quantidade de itens no carrinho {% endcomment %}
+                  {{ carrinho.itens|length }}
+                </span>
+              </a>
+            </div>            
+        </div> 
+      </div> 
+    </nav>  
+
+    {% comment %} Seção offcanvas do carrinho {% endcomment %}
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartSidebar" aria-labelledby="cartSidebarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="cartSidebarLabel">Carrinho de compras</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+      </div>
+      <div class="offcanvas-body">
+        {% for item in carrinho.itens %}
+        <div class="d-flex justify-content-between align-items-start border-bottom pb-3 mb-3">
+          <div class="d-flex gap-3">
+            <img src="{{ item.produto.foto.url }}" alt="{{ item.produto.nome }}" style="width: 60px; height: auto;">
+              <div>
+                <p class="mb-1 fw-semibold">{{ item.produto.nome }}</p>
+                <div class="input-group input-group-sm" style="max-width: 90px;">
+                  <button class="btn btn-outline-secondary btn-sm">−</button>
+                  <input type="text" class="form-control text-center" value="{{ item.quantidade }}">
+                  <button class="btn btn-outline-secondary btn-sm">+</button>
+                </div>
+              </div>
+          </div>
+        <div class="fw-bold">R$ {{ item.subtotal }}</div>
+        </div>
+        {% endfor %}
+
+          <div class="mt-4">
+            <p class="fw-bold text-end">Subtotal: R$ {{ carrinho.total }}</p>
+            <a href="{% url 'home' %}" class="btn btn-style w-100">Finalizar Compra</a>
+          </div>
+      </div>
+    </div>
+    {% comment %} Final da seção offcanvas do carrinho {% endcomment %}
+
+
+    {% comment %} Seção do Banner {% endcomment %}
+    <div class="container-fluid g-0 position-relative" id="div-banner">
+      <img id="banner">
+      <div class="position-absolute" id="div-texto-banner">
+        <h1 class="text-light">Zure <br>Cosméticos</h1>
+        <p class="text-light">Realce sua beleza natural com nossos produtos de alta performance.</p>
+        <button type="button" class="btn btn-style position-absolute" id="btn-banner">Ver Produtos</button>
+      </div>
+    </div>
+    {% comment %} Final da seção do Banner {% endcomment %}
+
+    {% comment %} Seção Sobre Nós {% endcomment %}
+    <div class="container-fluid d-flex flex-column container-fluid text-center align-items-center bg-light" id="div-sobre">
+      <h2 class="fw-bold my-3">Sobre Nós</h2> 
+      <p class="mb-3 col-10">Há mais de 5 anos no mercado, a Zure Cosméticos nasceu do sonho de 
+        uma família apaixonada por beleza, cuidado e autenticidade. Fundada e gerida 
+        por mãe e filhos, somos uma empresa 100% brasileira que acredita no poder do 
+        cuidado diário para realçar a beleza natural de cada pessoa.
+
+        Atendemos todo o Brasil com uma linha de produtos desenvolvidos com alta 
+        performance, fórmulas seguras e ingredientes selecionados, sempre pensando na 
+        saúde e bem-estar dos cabelos. Cada item é pensado com carinho, 
+        responsabilidade e compromisso com a qualidade.
+        
+        Na Zure, não vendemos apenas cosméticos — entregamos experiências de cuidado 
+        que transformam rotinas e elevam a autoestima.</p>
+    </div>
+    {% comment %} Final da seção Sobre Nós {% endcomment %}
+
+    {% comment %} Seção de produtos em destaque {% endcomment %}
+<div class="container-fluid text-center" id="div-destaques">
+  <h2 class="fw-bold my-3">Destaques</h2>
+  <div class="row justify-content-center">
+    {% for produto in destaques %}
+      <div class="col-6 col-md-3 mb-4">
+        <div class="card h-100 shadow-sm">
+          <img src="{{ produto.foto.url }}" class="card-img-top" alt="{{ produto.nome }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ produto.nome }}</h5>
+            <p class="card-text fw-bold">R$ {{ produto.preco }}</p>
+            <a href="#" class="btn btn-style btn-sm w-100">Ver Produto</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+    {% comment %} Final da seção de produtos em destaque {% endcomment %}
+
+    {% comment %} seção do Video de apresentação {% endcomment %}
+
+
+    {% comment %} Seção dos produtos {% endcomment %}
+    <div class="text-center" id="div-produtos">
+      <h2 class="fw-bold mt-4 mb-3">Nossos Produtos</h2>
+      <ul class="list-unstyled d-flex justify-content-center gap-4" id="ul-produtos">
+        <li>
+          <a class="text-dark text-decoration-none"href="{% url 'destaque1' %}">Leave-in</a>
+        </li>
+        <li>
+          <a class="text-dark text-decoration-none"href="{% url 'destaque1' %}">Óleo de argan</a>
+        </li>
+        <li>
+          <a class="text-dark text-decoration-none"href="{% url 'destaque1' %}">Kit Matizador</a>
+        </li>
+        <li>
+          <a class="text-dark text-decoration-none"href="{% url 'destaque1' %}">Kit Café</a>
+        </li>
+      </ul>
+    </div>
+
+    {% comment %} Seção de comentarios dos clientes {% endcomment %}
+
+
+    {% comment %} conheça nossos fundadores {% endcomment %}
+
+
+    {% comment %} footer {% endcomment %}
+    <footer class="container-fluid bg-light py-3">
+      <div class="container d-flex flex-wrap">
+          <div class="col-md-6 mb-3 mb-md-0">
+              <h5 class="">Institucional</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-dark text-decoration-none">Início</a></li>
+                  <li><a href="#" class="text-dark text-decoration-none">Produtos</a></li>
+                  <li><a href="#" class="text-dark text-decoration-none">Política de privacidade</a></li>
+                  <li><a href="#" class="text-dark text-decoration-none">Política de trocas e devoluções</a></li>
+              </ul>
+          </div>
+          <div class="col-6 col-md-6 mb-3 mb-md-0">
+              <h5 class="">Contato</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-dark text-decoration-none">+55(11)947244958</a></li>
+                  <li><a href="#" class="text-dark text-decoration-none">zurecosmeticos@hotmail.com</a></li>
+                  <li><a href="#" class="text-dark text-decoration-none">Rua Mica, 150 - Itaquaquecetuba - SP</a></li>
+              </ul>
+          </div>
+      </div>  
+      <p class="mb-0 text-center">© 2023 Zure Cosméticos. Todos os direitos reservados.</p>
+    </footer>
+    {% endblock %}
+  </div>
+  <script src="{% static 'js/script.js' %} " rel="script"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

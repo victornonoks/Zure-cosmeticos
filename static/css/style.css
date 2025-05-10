@@ -1,0 +1,98 @@
+/* CSS personalizado */
+#div-principal {
+    padding: 0;
+}
+
+.input-style {
+    background-color: #C49A50!important;
+}
+
+.input-style::placeholder {
+    color: #fff!important;
+}
+
+.btn-style {
+    background-color: #C49A50!important;
+    color: #fff!important;
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  left: 14px;
+  background-color: #C49A50;
+  color: #fff;
+  font-size: 0.55rem;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  line-height: 1;
+}
+
+#cart-count-home {
+    top: -2px!important;
+}
+
+#div-banner {
+    height: 100vh;
+    background-image: url('/static/img/Banner.png');
+    background-size: cover;
+    background-position: left center; /* mantém lado esquerdo fixo */
+    background-repeat: no-repeat;
+    position: relative;
+  }
+
+#btn-banner {
+    width: 10rem;
+    font-size: 1.25rem;
+}
+  
+#div-texto-banner {
+    position: absolute;
+    top: 50%;
+    left: 5.5%;
+    transform: translateY(-50%);
+  }
+
+/* Responsividade do texto do banner */
+#div-texto-banner h1 {
+    font-size: 8rem;
+}
+
+#div-texto-banner p {
+    font-size: 2rem;
+}
+
+@media (max-width: 780px) {
+    #div-texto-banner h1 {
+        font-size: 6rem;
+    }
+
+    #div-texto-banner p {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 560px) {
+    #div-texto-banner h1 {
+        font-size: 4rem;
+    }
+
+    #div-texto-banner p {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 380px) {
+    #div-texto-banner h1 {
+        font-size: 3.25rem;
+    }
+}
+/* Finalização da responsividade do texto do banner  */
+
+#div-login {
+    justify-content: end;
+}
