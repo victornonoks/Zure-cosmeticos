@@ -6,6 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}Zure Cosméticos{% endblock %}</title>
+  <link rel="icon" href="{% static 'img/logo.png' %}" type="image/png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -81,6 +82,7 @@
           <div class="mt-4">
             <p class="fw-bold text-end">Subtotal: R$ {{ carrinho.total }}</p>
             <a href="{% url 'home' %}" class="btn btn-style w-100">Finalizar Compra</a>
+            <a href="{% url 'home' %}" class="fw-light text-dark d-flex justify-content-center mt-2">Ver mais produtos</a>
           </div>
       </div>
     </div>
@@ -104,7 +106,7 @@
       <p class="mb-3 col-10">Há mais de 5 anos no mercado, a Zure Cosméticos nasceu do sonho de 
         uma família apaixonada por beleza, cuidado e autenticidade. Fundada e gerida 
         por mãe e filhos, somos uma empresa 100% brasileira que acredita no poder do 
-        cuidado diário para realçar a beleza natural de cada pessoa.
+        cuidado diário para realçar a beleza natural de cada pessoa.<br>
 
         Atendemos todo o Brasil com uma linha de produtos desenvolvidos com alta 
         performance, fórmulas seguras e ingredientes selecionados, sempre pensando na 
@@ -121,13 +123,13 @@
   <h2 class="fw-bold my-3">Destaques</h2>
   <div class="row justify-content-center">
     {% for produto in destaques %}
-      <div class="col-6 col-md-3 mb-4">
+      <div class="col-10 col-sm-8 col-md-4 col-lg-3 mb-4">
         <div class="card h-100 shadow-sm">
           <img src="{{ produto.foto.url }}" class="card-img-top" alt="{{ produto.nome }}">
           <div class="card-body">
-            <h5 class="card-title">{{ produto.nome }}</h5>
+            <h5 class="card-title fw-light">{{ produto.nome }}</h5>
             <p class="card-text fw-bold">R$ {{ produto.preco }}</p>
-            <a href="#" class="btn btn-style btn-sm w-100">Ver Produto</a>
+            <a href="#" class="btn btn-style btn-sm w-100">Comprar</a>
           </div>
         </div>
       </div>
@@ -143,40 +145,110 @@
     <div class="text-center" id="div-produtos">
       <h2 class="fw-bold mt-4 mb-3">Nossos Produtos</h2>
       <ul class="list-unstyled d-flex justify-content-center gap-4" id="ul-produtos">
-        <li>
-          <a class="text-dark text-decoration-none"href="{% url 'destaque1' %}">Leave-in</a>
-        </li>
-        <li>
-          <a class="text-dark text-decoration-none"href="{% url 'destaque1' %}">Óleo de argan</a>
-        </li>
-        <li>
-          <a class="text-dark text-decoration-none"href="{% url 'destaque1' %}">Kit Matizador</a>
-        </li>
-        <li>
-          <a class="text-dark text-decoration-none"href="{% url 'destaque1' %}">Kit Café</a>
-        </li>
+        <li><a class="text-dark text-decoration-none"href="{% url 'destaque' %}">Leave-in</a></li>
+        <li><a class="text-dark text-decoration-none"href="{% url 'destaque' %}">Óleo de argan</a></li>
+        <li><a class="text-dark text-decoration-none"href="{% url 'destaque' %}">Kit Matizador</a></li>
+        <li><a class="text-dark text-decoration-none"href="{% url 'destaque' %}">Kit Café</a></li>
       </ul>
     </div>
+    <div class="container-fluid d-flex flex-column text-center align-items-center" id="div-produtos">
+      <div class="row justify-content-center">
+        {% for produto in produtos %}
+          <div class="col-10 col-sm-8 col-md-4 col-lg-3 mb-4">
+            <div class="card h-100 shadow-sm">
+              <img src="{{ produto.foto.url }}" class="card-img-top" alt="{{ produto.nome }}">
+              <div class="card-body">
+                <h5 class="card-title fw-light">{{ produto.nome }}</h5>
+                <p class="card-text fw-bold">R$ {{ produto.preco }}</p>
+                <a href="#" class="btn btn-style btn-sm w-100">Comprar</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      {% comment %} Seção banner de produto {% endcomment %}
 
+<div class="container m-5">
+  <div class="row g-4">
+    <div class="col-md-6">
+      <a href="{% url 'home' %}">
+        <img src="{% static 'img/Óleo-banner.jpeg' %}" class="img-fluid rounded shadow" alt="Banner 1">
+      </a>
+    </div>
+    <div class="col-md-6">
+      <a href="{% url 'home' %}">
+        <img src="{% static 'img/Leavein-banner.jpeg' %}" class="img-fluid rounded shadow" alt="Banner 2">
+      </a>
+    </div>
+  </div>
+</div>
     {% comment %} Seção de comentarios dos clientes {% endcomment %}
 
 
     {% comment %} conheça nossos fundadores {% endcomment %}
+<div class="container my-5 text-center">
+  <h2 class="mb-5">Conheça nossos fundadores</h2>
+  <div class="row align-items-center">
+    
+    <!-- Coluna da pirâmide -->
+    <div class="col-md-6 d-flex flex-column align-items-center">
+      <!-- Círculo do topo -->
+      <div class="mb-4 text-center">
+        <img src="{% static 'img/elisete.jpg' %}" alt="Elisete Martines" class="founder-img mb-2">
+        <p class="founder-info mb-0 fw-bold">Elisete Martines</p>
+        <small class="text-muted">CEO da Zure Cosméticos</small>
+      </div>
+      <!-- Círculos da base -->
+      <div class="d-flex justify-content-center gap-4 text-center">
+        
+        <div>
+          <img src="{% static 'img/fundador1.jpeg' %}" alt="Fundador 1" class="founder-img mb-2">
+          <p class="founder-info mb-0 fw-bold">Victor Martines</p>
+          <small class="text-muted">Desenvolvedor 3D e programador</small>
+        </div>
+        
+        <div>
+          <img src="{% static 'img/fundador2.jpg' %}" alt="Fundador 2" class="founder-img mb-2">
+          <p class="founder-info mb-0 fw-bold">Priscila Martines</p>
+          <small class="text-muted">Diretor Comercial</small>
+        </div>
+        
+        <div>
+          <img src="{% static 'img/fundador3.jpg' %}" alt="Fundador 3" class="founder-img mb-2">
+          <p class="founder-info mb-0 fw-bold">Thiago Martines</p>
+          <small class="text-muted">Marketing</small>
+        </div>
+        
+      </div>
+    </div>
 
+    <!-- Coluna dos textos -->
+    <div class="col-md-6 d-flex flex-column gap-3 align-items-start mt-5">
+      <p class="descrição-fundadores">
+        "A Zure Cosméticos é mais do que uma marca, é a realização de um sonho familiar. 
+        Cada produto é desenvolvido com amor e dedicação, refletindo nossa paixão pela beleza 
+        e pelo cuidado. Estamos aqui para transformar sua rotina de beleza em um momento 
+        especial e único."
+      </p>
+    </div>
+    
+  </div>
+</div>
+    
 
     {% comment %} footer {% endcomment %}
     <footer class="container-fluid bg-light py-3">
       <div class="container d-flex flex-wrap">
           <div class="col-md-6 mb-3 mb-md-0">
               <h5 class="">Institucional</h5>
-              <ul class="list-unstyled">
+              <ul class="list-unstyled text-sm-center text-start">
                   <li><a href="#" class="text-dark text-decoration-none">Início</a></li>
                   <li><a href="#" class="text-dark text-decoration-none">Produtos</a></li>
                   <li><a href="#" class="text-dark text-decoration-none">Política de privacidade</a></li>
                   <li><a href="#" class="text-dark text-decoration-none">Política de trocas e devoluções</a></li>
               </ul>
           </div>
-          <div class="col-6 col-md-6 mb-3 mb-md-0">
+          <div class="col-10 col-md-6 mb-3 mb-md-0">
               <h5 class="">Contato</h5>
               <ul class="list-unstyled">
                   <li><a href="#" class="text-dark text-decoration-none">+55(11)947244958</a></li>

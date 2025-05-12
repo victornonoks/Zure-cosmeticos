@@ -78,6 +78,7 @@
           <div class="mt-4">
             <p class="fw-bold text-end">Subtotal: R$ {{ carrinho.total }}</p>
             <a href="{% url 'home' %}" class="btn btn-style w-100">Finalizar Compra</a>
+              <a href="{% url 'home' %}" class="fw-light text-dark d-flex justify-content-center mt-2">Ver mais produtos</a>
           </div>
       </div>
     </div>
@@ -114,7 +115,7 @@
             {% comment %} Campo confirmar senha {% endcomment %}
           <div class="mb-3">
             <label for="confirm-passsword" class="form-label fw-bold">Confirme sua senha</label>
-            <input type="password" class="form-control" id="confirm-password" name="confirm-password" placeholder="Ex: suasenha"></input>
+            <input type="password" class="form-control" id="confirm-password" name="confirm-password" placeholder="Ex: suasenha" required></input>
           </div>
           {% comment %} Criar conta {% endcomment %}
           <button type="submit" class="btn btn-style w-100">Criar conta</button>
