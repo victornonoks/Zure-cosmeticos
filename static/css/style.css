@@ -108,8 +108,14 @@
     object-fit: cover;
 }
 
+@media (max-width: 768px) {
+    .card-img-top {
+        height: 15em;
+    }
+}
+
 .card-body {
-    min-height: 1px;
+    max-height: 200px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

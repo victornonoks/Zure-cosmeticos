@@ -17,3 +17,9 @@ def login(request):
 
 def carrinho (request):
     return render(request, 'zure_app/carrinho.html')
+
+def produtos(request):
+    produtos = Produto.objects.all()
+    for p in produtos:
+        p.parcela = round(p.preco / 6, 2)
+    return render(request, 'zure_app/produtos.html', {'produtos': produtos})
