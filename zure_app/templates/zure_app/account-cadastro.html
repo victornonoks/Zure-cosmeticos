@@ -89,7 +89,7 @@
       <div class="col-12 col-md-6 px-4">
         <h2 class="fw-bold mb-4 text-dark">Iniciar sessão</h2>
         <p class="fw-bold">Compre mais rapido e acompanhe seus pedidos em um lugar só!</p>
-        <form method="POST" action="{% url 'login' %}">
+        <form method="POST" action="{% url 'cadastro' %}">
           {% csrf_token %}
           {% comment %} Campo nome completo {% endcomment %}
           <div class="mb-3">
