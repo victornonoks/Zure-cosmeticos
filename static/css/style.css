@@ -146,3 +146,12 @@
 .founder-info {
   font-size: 0.95rem;
 }
+
+.video-vertical {
+  aspect-ratio: 9 / 16;
+  max-height: 580px;
+  max-width: 420px;
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
