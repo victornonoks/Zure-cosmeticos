@@ -89,32 +89,20 @@
       <div class="col-12 col-md-6 px-4">
         <h2 class="fw-bold mb-4 text-dark">Iniciar sessão</h2>
         <form method="POST" action="{% url 'account_login' %}">
-            {% csrf_token %}
-            {% comment %} campo de e-mail {% endcomment %}
-            <div class="mb-3">
-                <label for="email" class="form-label">E-mail</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Ex: seuemail@email.com" required>
+          {% csrf_token %}
+          {{ form.as_p }}
+
+          {% if form.errors %}
+            <div class="alert alert-danger mt-2">
+              {{ form.errors }}
             </div>
-            {% comment %} campo de senha {% endcomment %}
-            <div class="mb-3">
-                <label for="password" class="form-label">Senha</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Ex: suasenha" required>
-            </div>
-            <div class="mb-3 d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-2">
-                <div class="form-check">
-                    {% comment %} checkbox para lembrar usuario {% endcomment %}
-                    <input type="checkbox" class="form-check-input shadow-none" id="remember-me" name="remember-me" value="true">
-                    <label for="remember-me" class="form-label">Lembrar de mim</label>
-                </div>
-                {% comment %} link para recuperar senha {% endcomment %}
-                <a href="{% url 'account_reset_password' %}" class="text-decoration-none">Esqueci minha senha</a>
-            </div>
-            {% comment %} botão de login {% endcomment %}
-          <button type="submit" class="btn btn-style w-100">Iniciar Sessão</button>
-        {% comment %} link para cadastro {% endcomment %}
-          <p class="mt-3">Não possui uma conta? 
-            <a href="{% url 'account_signup' %}" class="text-decoration-none ">Cadastre-se</a>
-        </p>    
+          {% endif %}
+
+          <button type="submit" class="btn btn-style w-100 mt-3">Iniciar Sessão</button>
+
+          <p class="mt-3">Não possui uma conta?
+            <a href="{% url 'account_signup' %}" class="text-decoration-none">Cadastre-se</a>
+          </p>
         </form>
       </div>
     </div>

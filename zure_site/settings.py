@@ -38,10 +38,11 @@ ACCOUNT_USER_MODEL_USERNAME_FIELD = None #desabilita o username
 ACCOUNT_EMAIL_REQUIRED = True #email obrigatorio
 ACCOUNT_USERNAME_REQUIRED = False #usarname não é obrigatorio
 ACCOUNT_AUTHENTICATION_METHOD = 'email' #login para email
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory' #verifica email antes do login
+ACCOUNT_EMAIL_VERIFICATION = 'none' #verifica email antes do login
 ACCOUNT_SINGUP_PASSWORD_ENTER_TWICE = True #confirmação de senha
 ACCOUNT_SINGUP_FORM_CLASS = 'accounts.forms.CustomSingupForm' #form customizado
 LOGIN_REDIRECT_URL = '/' #redireciona para a home após o login
+LOGOUT_REDIRECT_URL = '/' #redireciona para a home após o logout
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
