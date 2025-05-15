@@ -3,9 +3,13 @@
     padding: 0;
 }
 
+.gold {
+    color: #e2bc7c;
+}
+
 
 .input-style {
-    background-color: #C49A50!important;
+    background-color: #e2bc7c!important;
 }
 
 .input-style::placeholder {
@@ -13,29 +17,29 @@
 }
 
 .btn-style {
-    background-color: #C49A50!important;
+    background-color: #e2bc7c!important;
     color: #fff!important;
 }
 
 .btn-style:hover {
-    background-color: #ad8641!important;
+    background-color: #d3ac68!important;
     color: #fff!important;
 }
 
 .cart-count {
-  position: absolute;
-  top: -8px;
-  left: 14px;
-  background-color: #C49A50;
-  color: #fff;
-  font-size: 0.55rem;
-  width: 16px;
-  height: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  line-height: 1;
+    position: absolute;
+    top: -8px;
+    left: 14px;
+    background-color: #e2bc7c;
+    color: #fff;
+    font-size: 0.55rem;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    line-height: 1;
 }
 
 #cart-count-home {
@@ -122,36 +126,42 @@
 }
 
 .circle {
-  width: 80px;
-  height: 80px;
-  background-color: #c29442;
-  border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    background-color: #c29442;
+    border-radius: 50%;
 }
 .descricao-fundador {
-  max-width: 400px;
-  color: #444;
-  line-height: 1.6;
-  font-size: 1rem;
-  text-align: left;
+    max-width: 400px;
+    color: #444;
+    line-height: 1.6;
+    font-size: 1rem;
+    text-align: left;
 }
 
 .founder-img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 2px solid #c29442;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #c29442;
 }
 
 .founder-info {
-  font-size: 0.95rem;
+    font-size: 0.95rem;
+}
+
+.bg-video {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url('/static/img/banner-video.png');  
+    background-size: cover; 
+    background-repeat: no-repeat;
 }
 
 .video-vertical {
-  aspect-ratio: 9 / 16;
-  max-height: 580px;
-  max-width: 420px;
-  width: 100%;
-  border-radius: 10px;
-  object-fit: cover;
+    aspect-ratio: 9 / 16;
+    max-height: 580px;
+    max-width: 420px;
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
 }

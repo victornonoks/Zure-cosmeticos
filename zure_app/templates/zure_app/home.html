@@ -124,7 +124,7 @@
     {% comment %} Final da seção Sobre Nós {% endcomment %}
 
     {% comment %} Seção de produtos em destaque {% endcomment %}
-    <div class="container-fluid text-center" id="div-destaques">
+    <div class="container-fluid text-center bg-color" id="div-destaques">
       <h2 class="fw-bold my-3">Destaques</h2>
       <div class="row justify-content-center">
         {% for produto in destaques %}
@@ -144,41 +144,42 @@
     {% comment %} final Seção de produtos em destaque {% endcomment %}
 
     {% comment %} Seção do Video de apresentação {% endcomment %}
-    <div class="container my-5">
-      <div class="row align-items-center">
-        
-        <!-- Texto à esquerda -->
-        <div class="col-md-6 text-center text-md-start">
-          <h2 class="fw-bold mb-3 text-center text-md-start">Leave-in Termoativado</h2>
-          <p>
-          O Leave-in Termoativado da Zure Cosméticos é a escolha ideal para quem utiliza 
-          ferramentas térmicas no dia a dia. Sua fórmula avançada protege os fios contra 
-          temperaturas de até 230°C, ao mesmo tempo em que hidrata profundamente e reduz 
-          o frizz.
-          <br>
-          Com textura leve e de rápida absorção, ele deixa os cabelos mais macios, 
-          brilhantes e fáceis de modelar — sem pesar e sem necessidade de enxágue.
-          </p>
-          <ul class="list-unstyled">
-            <li>• Proteção térmica até 230°C</li>
-            <li>• Reduz frizz e promove brilho instantâneo</li>
-            <li>• Sem enxágue, ideal para uso diário</li>
-            <li>• Facilita a escovação e modelagem</li>
-            <li>• Indicado para todos os tipos de cabelo</li>
-          </ul>
-        </div>
+    <section class="bg-video">
+      <div class="container my-5">
+        <div class="row align-items-center">
+          
+          <!-- Texto à esquerda -->
+          <div class="col-md-6 text-center text-md-start">
+            <h2 class="fw-bold mb-3 text-center text-md-start gold">Leave-in Termoativado</h2>
+            <p>
+            O Leave-in Termoativado da Zure Cosméticos é a escolha ideal para quem utiliza 
+            ferramentas térmicas no dia a dia. Sua fórmula avançada <strong>protege os fios 
+            contra temperaturas de até 230°C</strong>, ao mesmo tempo em que hidrata 
+            profundamente e reduz o frizz.
+            <br>
+            Com textura leve e de rápida absorção, ele deixa os cabelos mais macios, 
+            brilhantes e fáceis de modelar — sem pesar e sem necessidade de enxágue.
+            </p>
+            <ul class="list-unstyled">
+              <li>• Proteção térmica até 230°C</li>
+              <li>• Reduz frizz e promove brilho instantâneo</li>
+              <li>• Sem enxágue, ideal para uso diário</li>
+              <li>• Facilita a escovação e modelagem</li>
+              <li>• Indicado para todos os tipos de cabelo</li>
+            </ul>
+          </div>
 
-        <!-- Vídeo à direita -->
-        <div class="col-md-6 text-center">
-          <video controls autoplay muted loop playsinline class="video-vertical">
-            <source src="{% static 'videos/leave-in.mp4' %}" type="video/mp4">
-            Seu navegador não suporta vídeo HTML5.
-          </video>
-        </div>
+          <!-- Vídeo à direita -->
+          <div class="col-md-6 text-center">
+            <video controls autoplay muted loop playsinline class="video-vertical my-4">
+              <source src="{% static 'videos/leave-in.mp4' %}" type="video/mp4">
+              Seu navegador não suporta vídeo HTML5.
+            </video>
+          </div>
 
+        </div>
       </div>
-    </div>
-
+    </section>
     {% comment %} Final seção do Video de apresentação {% endcomment %}
 
 
