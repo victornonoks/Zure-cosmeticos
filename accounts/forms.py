@@ -3,8 +3,15 @@ from django import forms
 from .models import User
 
 class CustomSignupForm(SignupForm):
-    nome_completo = forms.CharField(max_length=150, label='Nome Completo')
-    telefone = forms.CharField(max_length=20, required=False, label='Telfeone(opcional)')
+    nome_completo = forms.CharField(
+        max_length=150,
+        label='Nome Completo'
+    )
+    
+    telefone = forms.CharField(
+        max_length=20,
+        required=False, label='Telfeone(opcional)'
+    )
 
     def save(self, request):
         user = super().save(request)

@@ -37,7 +37,7 @@
               class="form-control rounded-pill col-4 input-style" 
               placeholder="O que você procura?" 
               style="width: 100%; max-width: 350px;"/>
-              <a href="{% url 'login'%}" class="text-dark" style="font-size: 1.5rem;">
+              <a href="{% url 'account_login'%}" class="text-dark" style="font-size: 1.5rem;">
                 <i class="bi bi-person-circle"></i>
               </a>
                 <a href="#" class="text-dark position-relative" id="cart-toggle" style="font-size: 1.5rem;">
@@ -88,7 +88,7 @@
     <div class="d-flex justify-content-start align-items-center h-100">
       <div class="col-12 col-md-6 px-4">
         <h2 class="fw-bold mb-4 text-dark">Iniciar sessão</h2>
-        <form method="POST" action="{% url 'login' %}">
+        <form method="POST" action="{% url 'account_login' %}">
             {% csrf_token %}
             {% comment %} campo de e-mail {% endcomment %}
             <div class="mb-3">
@@ -107,13 +107,13 @@
                     <label for="remember-me" class="form-label">Lembrar de mim</label>
                 </div>
                 {% comment %} link para recuperar senha {% endcomment %}
-                <a href="{% url 'login' %}" class="text-decoration-none">Esqueci minha senha</a>
+                <a href="{% url 'account_reset_password' %}" class="text-decoration-none">Esqueci minha senha</a>
             </div>
             {% comment %} botão de login {% endcomment %}
           <button type="submit" class="btn btn-style w-100">Iniciar Sessão</button>
         {% comment %} link para cadastro {% endcomment %}
           <p class="mt-3">Não possui uma conta? 
-            <a href="{% url 'cadastro' %}" class="text-decoration-none ">Cadastre-se</a>
+            <a href="{% url 'account_signup' %}" class="text-decoration-none ">Cadastre-se</a>
         </p>    
         </form>
       </div>
