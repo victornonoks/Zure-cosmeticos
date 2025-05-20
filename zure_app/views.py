@@ -9,11 +9,11 @@ def home(request):
 def destaque1(request):
     return render(request, 'zure_app/destaque.html')
 
-def cadastro(request):
-    return render(request, 'zure_app/account-cadastro.html')
+def signup(request):
+    return render(request, 'zure_app/signup.html')
 
 def login(request):
-    return render(request, 'zure_app/account-login.html')
+    return render(request, 'zure_app/login.html')
 
 def carrinho (request):
     return render(request, 'zure_app/carrinho.html')

@@ -26,6 +26,40 @@
     color: #fff!important;
 }
 
+.btn-danger {
+    background-color: #A64242;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #b44037;
+    color: #fff;
+}
+
+.login-dropdown {
+  position: relative;
+}
+
+.login-dropdown .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  right: 0;
+  transform: translateX(-50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease-in-out;
+  z-index: 999;
+}
+
+.login-dropdown:hover .dropdown-menu {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-100%) translateY(0);
+}
+
 .cart-count {
     position: absolute;
     top: -8px;
@@ -164,4 +198,10 @@
     width: 100%;
     border-radius: 10px;
     object-fit: cover;
+}
+
+.style-login-singup{
+    min-height: calc(100vh - 300px);
+    padding-top: 100px;
+    padding-bottom: 100px;
 }
