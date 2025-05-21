@@ -12,12 +12,37 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'zure_app',
 ]
+
+AUTH_USER_MODEL = 'accounts.User'
+
+SITE_ID = 1
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None # Não usar nome de usuário
+ACCOUNT_USERNAME_REQUIRED = False # Não pegar usuario
+ACCOUNT_EMAIL_REQUIRED = True # Pegar email
+ACCOUNT_AUTHENTICATION_METHOD = 'email' # Usar email para autenticação
+ACCOUNT_EMAIL_VERIFICATION = 'none' # Não verificar email
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True # Repetir senha
+ACCOUNT_FORMS = {'signup': 'accounts.forms.CustomSignupForm'} # Usar o formulário de signup personalizado
+LOGIN_REDIRECT_URL = '/' # Redirecionar para a home após login
+LOGOUT_REDIRECT_URL = '/' # Redirecionar para a home após logout
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -25,6 +50,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
