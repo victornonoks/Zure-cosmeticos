@@ -48,15 +48,15 @@
                 <li><p class="dropdown-item-text mb-2">Olá, {{ user.first_name|default:user.username }}!</p></li>
                 <li><hr class="dropdown-divider"></li>
                 <div class="d-flex flex-column gap-2">
-                <li><a class="rounded-1 btn-style dropdown-item" href="{% url 'login' %}">Meu Perfil</a></li>
+                <li><a class="rounded-1 btn-style dropdown-item" href="{% url 'account_login' %}">Meu Perfil</a></li>
                 <li><button class="rounded-1 btn-danger dropdown-item" data-bs-toggle="modal" data-bs-target="#modalLogout">Sair</button></li>
                 </div>
                 {% else %}
                 <li><p class="dropdown-item-text mb-2">Acesse sua conta para acompanhar pedidos e ofertas.</p></li>
                 <li><hr class="dropdown-divider"></li>
                 <div class="d-flex gap-2">
-                  <li><a class="btn-style dropdown-item" href="{% url 'login' %}">Entrar</a></li>
-                  <li><a class="btn-style dropdown-item" href="{% url 'signup' %}">Cadastrar-se</a></li>
+                  <li><a class="btn-style dropdown-item" href="{% url 'account_login' %}">Entrar</a></li>
+                  <li><a class="btn-style dropdown-item" href="{% url 'account_signup' %}">Cadastrar-se</a></li>
                 </div>
                 {% endif %}
               </ul>
@@ -79,7 +79,7 @@
     <div class="modal-content text-center p-4">
       <h5 class="modal-title mb-3" id="modalLogoutLabel">Deseja realmente sair?</h5>
       <p>Você será desconectado da sua conta.</p>
-      <form method="POST" action="{% url 'logout' %}">
+      <form method="POST" action="{% url 'account_logout' %}">
         {% csrf_token %}
         <div class="d-flex justify-content-center gap-3 mt-3">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

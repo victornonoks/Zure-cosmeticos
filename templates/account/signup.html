@@ -1,0 +1,28 @@
+{% extends "zure_app/home.html" %}
+{% load widget_tweaks %}
+{% block title %}Cadastro{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-start align-items-center h-100 style-login-singup mt-3">
+  <div class="col-12 col-md-6 px-4">
+    <h2 class="fw-bold mb-4 text-dark">Cadastre-se</h2>
+    <form method="post" action="{% url 'account_signup' %}">
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+      {% for field in form.visible_fields %}
+        <div class="mb-3">
+          <label for="{{ field.id_for_label }}" class="form-label fw-bold">
+            {{ field.label }}
+          </label>
+          {{ field|add_class:"form-control" }}
+          {{ field.errors }}
+        </div>
+      {% endfor %}
+      <button type="submit" class="btn btn-style w-100">Criar conta</button>
+      <p class="mt-3">
+        Já possui uma conta?
+        <a href="{% url 'account_login' %}" class="text-decoration-none">Faça Login</a>
+      </p>
+    </form>
+  </div>
+</div>
+{% endblock %}
