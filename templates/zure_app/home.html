@@ -48,7 +48,7 @@
                 <li><p class="dropdown-item-text mb-2">Olá, {{ user.first_name|default:user.username }}!</p></li>
                 <li><hr class="dropdown-divider"></li>
                 <div class="d-flex flex-column gap-2">
-                <li><a class="rounded-1 btn-style dropdown-item" href="{% url 'account_login' %}">Meu Perfil</a></li>
+                <li><a class="rounded-1 btn-style dropdown-item" href="{% url 'profile' %}">Meu Perfil</a></li>
                 <li><button class="rounded-1 btn-danger dropdown-item" data-bs-toggle="modal" data-bs-target="#modalLogout">Sair</button></li>
                 </div>
                 {% else %}
@@ -165,7 +165,7 @@
     {% comment %} Final da seção Sobre Nós {% endcomment %}
 
     {% comment %} Seção de produtos em destaque {% endcomment %}
-    <div class="container-fluid text-center bg-color" id="div-destaques">
+    <div class="container-fluid d-flex flex-column text-center align-items-center" id="div-destaques">
       <h2 class="fw-bold my-3">Destaques</h2>
       <div class="row justify-content-center">
         {% for produto in destaques %}
@@ -381,6 +381,7 @@
       </ul>
     </div>
   </div>  
+  <hr>
   <p class="mb-0 text-center">© 2023 Zure Cosméticos. Todos os direitos reservados.</p>
 </footer>
 <script src="{% static 'js/script.js' %} " rel="script"></script>

@@ -18,6 +18,9 @@ def login(request):
 def carrinho (request):
     return render(request, 'zure_app/carrinho.html')
 
+def profile(request):
+    return render(request, 'zure_app/profile.html')
+
 def produtos(request):
     produtos = Produto.objects.all()
     for p in produtos:
