@@ -61,7 +61,12 @@
                 {% endif %}
               </ul>
           </div>
-          <a class="text-dark position-relative" id="cart-toggle" style="cursor: pointer; font-size: 1.5rem;">
+          <a class="text-dark position-relative"
+            data-bs-toggle="offcanvas" 
+            role="button" 
+            aria-controls="cartSidebar"
+           id="cart-toggle" 
+           style="cursor: pointer; font-size: 1.5rem;">
             <i class="bi bi-basket2-fill"></i>
             <span class="cart-count" id="cart-count-home">
             {% comment %} Exibe a quantidade de itens no carrinho {% endcomment %}
@@ -73,6 +78,39 @@
     </nav>  
   </div>
 </header>
+
+{% comment %} Seção offcanvas do carrinho {% endcomment %}
+<div class="offcanvas offcanvas-end" tabindex="-1" id="cartSidebar" aria-labelledby="cartSidebarLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="cartSidebarLabel">Carrinho de compras</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+  </div>
+  <div class="offcanvas-body">
+    {% for item in carrinho.itens %}
+    <div class="d-flex justify-content-between align-items-start border-bottom pb-3 mb-3">
+      <div class="d-flex gap-3">
+        <img src="{{ item.produto.foto.url }}" alt="{{ item.produto.nome }}" style="width: 60px; height: auto;">
+          <div>
+            <p class="mb-1 fw-semibold">{{ item.produto.nome }}</p>
+              <div class="input-group input-group-sm" style="max-width: 90px;">
+                <button class="btn btn-outline-secondary btn-sm">−</button>
+                <input type="text" class="form-control text-center" value="{{ item.quantidade }}">
+                <button class="btn btn-outline-secondary btn-sm">+</button>
+              </div>
+          </div>
+      </div>
+      <div class="fw-bold">
+        R$ {{ item.subtotal }}
+      </div>
+      {% endfor %}
+      <div class="mt-4">
+        <p class="fw-bold text-end">Subtotal: R$ {{ carrinho.total }}</p>
+        <a href="{% url 'home' %}" class="btn btn-style w-100">Finalizar Compra</a>
+        <a href="{% url 'produtos' %}" class="fw-light text-dark d-flex justify-content-center mt-2">Ver mais produtos</a>
+      </div>
+    </div>
+</div>
+    {% comment %} Final da seção offcanvas do carrinho {% endcomment %}
 
 <div class="modal fade" id="modalLogout" tabindex="-1" aria-labelledby="modalLogoutLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -93,41 +131,6 @@
 <body>
    {% block content %}
   <div class="container-fluid" id="div-principal">
-   
-    {% comment %} Seção da navbar {% endcomment %}
-
-        {% comment %} Seção offcanvas do carrinho {% endcomment %}
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="cartSidebar" aria-labelledby="cartSidebarLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="cartSidebarLabel">Carrinho de compras</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
-        </div>
-        <div class="offcanvas-body">
-            {% for item in carrinho.itens %}
-            <div class="d-flex justify-content-between align-items-start border-bottom pb-3 mb-3">
-            <div class="d-flex gap-3">
-                <img src="{{ item.produto.foto.url }}" alt="{{ item.produto.nome }}" style="width: 60px; height: auto;">
-                <div>
-                    <p class="mb-1 fw-semibold">{{ item.produto.nome }}</p>
-                    <div class="input-group input-group-sm" style="max-width: 90px;">
-                    <button class="btn btn-outline-secondary btn-sm">−</button>
-                    <input type="text" class="form-control text-center" value="{{ item.quantidade }}">
-                    <button class="btn btn-outline-secondary btn-sm">+</button>
-                    </div>
-                </div>
-            </div>
-            <div class="fw-bold">R$ {{ item.subtotal }}</div>
-                {% endfor %}
-                <div class="mt-4">
-                    <p class="fw-bold text-end">Subtotal: R$ {{ carrinho.total }}</p>
-                    <a href="{% url 'home' %}" class="btn btn-style w-100">Finalizar Compra</a>
-                    <a href="{% url 'produtos' %}" class="fw-light text-dark d-flex justify-content-center mt-2">Ver mais produtos</a>
-                </div>
-            </div>
-        </div>
-    {% comment %} Final da seção offcanvas do carrinho {% endcomment %}
-
-
     {% comment %} Seção do Banner {% endcomment %}
     <div class="container-fluid g-0 position-relative" id="div-banner">
       <img id="banner">
@@ -272,34 +275,34 @@
       
       <div class="row g-4 justify-content-center">
         {% comment %} Card 1 {% endcomment %}
-        <div class="col-6 col-sm-6 col-md-5 col-lg-3 mb-4">
+        <div class="col-6 col-sm-6 col-md-5 col-lg-4 mb-4">
           <div class="card h-100 shadow-sm">
-            <img src="{% static 'avaliacoes/avaliacao1.jpg' %}" class="card-img-top" alt="Avaliação 1">
+            <img src="{% static 'img/Avaliação 1.png' %}" class="card-img-top" alt="Avaliação 1">
             <div class="card-body text-center">
-              <p class="card-text">"Produto maravilhoso, deixou meu cabelo incrível!"</p>
+              <p class="card-text">"Produtos maravilhosos, deixou meu cabelo incrível!"</p>
               <small class="text-muted">— Cliente verificado</small>
             </div>
           </div>
         </div>
 
         {% comment %} Card 2 {% endcomment %}
-        <div class="col-6 col-sm-6 col-md-5 col-lg-3 mb-4">
+        <div class="col-6 col-sm-6 col-md-5 col-lg-4 mb-4">
           <div class="card h-100 shadow-sm">
-            <img src="{% static 'avaliacoes/avaliacao2.jpg' %}" class="card-img-top" alt="Avaliação 2">
+            <img src="{% static 'img/Avaliação 2.png' %}" class="card-img-top" alt="Avaliação 2">
             <div class="card-body text-center">
               <p class="card-text">"Chegou super rápido, embalagem impecável!"</p>
-              <small class="text-muted">— Cliente fiel</small>
+              <small class="text-muted">— Cliente verificado</small>
             </div>
           </div>
         </div>
 
         {% comment %} Card 3 {% endcomment %}
-        <div class="col-6 col-sm-6 col-md-5 col-lg-3 mb-4">
+        <div class="col-6 col-sm-6 col-md-5 col-lg-4 mb-4">
           <div class="card h-100 shadow-sm">
-            <img src="{% static 'avaliacoes/avaliacao3.jpg' %}" class="card-img-top" alt="Avaliação 3">
+            <img src="{% static 'img/Avaliação 3.png' %}" class="card-img-top" alt="Avaliação 3">
             <div class="card-body text-center">
-              <p class="card-text">"Simplesmente apaixonada, recomendo demais."</p>
-              <small class="text-muted">— Compradora da Zure</small>
+              <p class="card-text">"Simplesmente apaixonada por tudo, recomendo demais."</p>
+              <small class="text-muted">— Cliente verificado</small>
             </div>
           </div>
         </div>
@@ -317,7 +320,7 @@
         <div class="col-md-6 d-flex flex-column align-items-center">
           <!-- Círculo do topo -->
           <div class="mb-4 text-center">
-            <img src="{% static 'img/elisete.jpg' %}" alt="Elisete Martines" class="founder-img mb-2">
+            <img src="{% static 'img/elisete.jpg' %}" alt="CEO" class="founder-img mb-2">
             <p class="founder-info mb-0 fw-bold">Elisete Martines</p>
             <small class="text-muted">CEO da Zure Cosméticos</small>
           </div>
