@@ -76,7 +76,9 @@
       {% for produto in produtos %}
         <div class="col-6 col-md-6 col-lg-4">
           <div class="card h-100">
-            <img src="{{ produto.foto.url }}" class="card-img-top" alt="{{ produto.nome }}">
+            <a href="{% url 'destaque' produto.slug%}">
+              <img src="{{ produto.foto.url }}" class="card-img-top" alt="{{ produto.nome }}">
+            </a>
             <div class="card-body">
               <p class="mb-1 fw-light">{{ produto.nome }}</p>
               {% if produto.preco_original %}

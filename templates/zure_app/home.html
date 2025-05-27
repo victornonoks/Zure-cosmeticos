@@ -29,10 +29,9 @@
         <div class="collapse navbar-collapse" id="navbarContent"> 
           <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
           <li class="nav-item"><a class="nav-link" href="{% url 'home'%}">Inicio</a></li> 
-          <li class="nav-item"><a class="nav-link" href="#">Sobre</a> </li> 
-          <li class="nav-item"> <a class="nav-link" href="#">Destaques</a> </li> 
-          <li class="nav-item"> <a class="nav-link" href="{% url 'produtos' %}">Produtos</a> </li> 
-          <li class="nav-item"> <a class="nav-link" href="#">Fundadores</a></li>
+          <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a> </li> 
+          <li class="nav-item"> <a class="nav-link" href="#destaques">Destaques</a></li> 
+          <li class="nav-item"> <a class="nav-link" href="{% url 'produtos' %}">Produtos</a></li> 
           </ul>
           <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-lg-end gap-4 w-100 w-lg-auto">
             <input type="search" 
@@ -143,7 +142,7 @@
     {% comment %} Final da seção do Banner {% endcomment %}
 
     {% comment %} Seção Sobre Nós {% endcomment %}
-    <div class="container-fluid d-flex flex-column container-fluid text-center align-items-center bg-light" id="div-sobre">
+    <div class="container-fluid d-flex flex-column container-fluid text-center align-items-center bg-light" id="sobre">
       <h2 class="fw-bold my-3 mt-4">Sobre Nós</h2> 
       <p class="mb-1 col-10">Há mais de 5 anos no mercado, a Zure Cosméticos vem construindo uma trajetória sólida, 
       baseada em valores familiares, paixão pela beleza e compromisso com a excelência.
@@ -168,13 +167,15 @@
     {% comment %} Final da seção Sobre Nós {% endcomment %}
 
     {% comment %} Seção de produtos em destaque {% endcomment %}
-    <div class="container-fluid d-flex flex-column text-center align-items-center" id="div-destaques">
+    <div class="container-fluid d-flex flex-column text-center align-items-center" id="destaques">
       <h2 class="fw-bold my-3">Destaques</h2>
       <div class="row justify-content-center">
         {% for produto in destaques %}
           <div class="col-6 col-sm-8 col-md-4 col-lg-3 mb-4">
             <div class="card h-100 shadow-sm">
-              <img src="{{ produto.foto.url }}" class="card-img-top" alt="{{ produto.nome }}">
+              <a href="{% url 'destaque' produto.slug %}">
+                <img src="{{ produto.foto.url }}" class="card-img-top" alt="{{ produto.nome }}">
+              </a>
               <div class="card-body">
                 <h5 class="card-title fw-light">{{ produto.nome }}</h5>
                 <p class="card-text fw-bold">R$ {{ produto.preco }}</p>
@@ -188,7 +189,7 @@
     {% comment %} final Seção de produtos em destaque {% endcomment %}
 
     {% comment %} Seção do Video de apresentação {% endcomment %}
-    <section class="bg-video">
+    <section class="bg-banner">
       <div class="container my-5">
         <div class="row align-items-center">
           
@@ -231,10 +232,10 @@
     <div class="text-center" id="div-produtos">
       <h2 class="fw-bold mt-4 mb-3">Nossos Produtos</h2>
       <ul class="list-unstyled d-flex justify-content-center gap-4" id="ul-produtos">
-        <li><a class="text-dark text-decoration-none"href="{% url 'destaque' %}">Leave-in</a></li>
-        <li><a class="text-dark text-decoration-none"href="{% url 'destaque' %}">Óleo de argan</a></li>
-        <li><a class="text-dark text-decoration-none"href="{% url 'destaque' %}">Kit Matizador</a></li>
-        <li><a class="text-dark text-decoration-none"href="{% url 'destaque' %}">Kit Café</a></li>
+        <li><a class="text-dark text-decoration-none"href="">Leave-in</a></li>
+        <li><a class="text-dark text-decoration-none"href="">Óleo de argan</a></li>
+        <li><a class="text-dark text-decoration-none"href="">Kit Matizador</a></li>
+        <li><a class="text-dark text-decoration-none"href="">Kit Café</a></li>
       </ul>
     </div>
     <div class="container-fluid d-flex flex-column text-center align-items-center" id="div-produtos">
@@ -242,7 +243,9 @@
         {% for produto in produtos %}
           <div class="col-6 col-sm-8 col-md-4 col-lg-3 mb-4">
             <div class="card h-100 shadow-sm">
-              <img src="{{ produto.foto.url }}" class="card-img-top" alt="{{ produto.nome }}">
+              <a href="{% url 'destaque' produto.slug %}">
+                <img src="{{ produto.foto.url }}" class="card-img-top" alt="{{ produto.nome }}">
+              </a>
               <div class="card-body">
                 <h5 class="card-title fw-light">{{ produto.nome }}</h5>
                 <p class="card-text fw-bold">R$ {{ produto.preco }}</p>
@@ -311,7 +314,7 @@
 
     {% comment %} Final de seção de comentarios dos clientes {% endcomment %}
 
-    {% comment %} conheça nossos fundadores {% endcomment %}
+    {% comment %} conheça nossos fundadores 
     <div class="container my-5 text-center">
       <h2 class="mb-5">Conheça nossos fundadores</h2>
       <div class="row align-items-center">
@@ -359,6 +362,8 @@
         </div>
       </div>
     </div>
+    {% endcomment %}
+
     {% endblock %}
   </div>
 </body>

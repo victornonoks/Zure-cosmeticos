@@ -6,6 +6,7 @@ class Produto(models.Model):
     preco = models.DecimalField(max_digits=10, decimal_places=2)
     foto = models.ImageField(upload_to="image/")
     destaques = models.BooleanField(default=False)
+    slug = models.SlugField(unique=True, blank=True)
     # categoria = models.ForeignKey('Categoria', on_delete=models.CASCADE, related_name='produtos')
 
     def __str__(self):

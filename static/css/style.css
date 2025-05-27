@@ -185,7 +185,7 @@
     font-size: 0.95rem;
 }
 
-.bg-video {
+.bg-banner {
     background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url('/static/img/banner-video.png');  
     background-size: cover; 
     background-repeat: no-repeat;
@@ -204,4 +204,9 @@
     min-height: calc(100vh - 300px);
     padding-top: 100px;
     padding-bottom: 100px;
+}
+
+#imagem-destaque img {
+    max-height: 32em;
+    max-width: 26em;
 }
