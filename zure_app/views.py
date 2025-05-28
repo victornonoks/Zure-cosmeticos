@@ -10,12 +10,6 @@ def destaque(request, slug):
     produto = get_object_or_404(Produto, slug=slug)
     return render(request, 'zure_app/destaque.html', {'produto': produto})
 
-def signup(request):
-    return render(request, 'zure_app/signup.html')
-
-def login(request):
-    return render(request, 'zure_app/login.html')
-
 def carrinho (request):
     return render(request, 'zure_app/carrinho.html')
 

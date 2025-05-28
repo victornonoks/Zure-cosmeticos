@@ -23,12 +23,12 @@
         {{ form.password.errors }}
       </div>
       <button type="submit" class="btn btn-style w-100">Entrar</button>
-      <div class="d-flex mt-3 space-between">
+      <div class="d-flex mt-3 space-between gap-3">
         <p class="">
           Não possui uma conta?
           <a href="{% url 'account_signup' %}" class="text-decoration-none">Cadastre-se</a>
         </p>
-        <a href="" class="text-decoration-none">esqueci minha senha</a>
+        <a href="{% url 'account_reset_password' %}" class="text-decoration-none">esqueci minha senha</a>
       </div>
     </form>
   </div>
