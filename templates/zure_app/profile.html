@@ -8,35 +8,36 @@
     <div class="column my-4">
         <div class="col-md-6 mb-3">
             <label for="name" class="form-label">Nome:</label>
-            <input type="text" class="form-control" id="name" value="{{ user.first_name }}" disabled>
+            <input type="text" class="form-control input" id="name" value="{{ user.first_name }}" disabled>
         </div>
         <div class="col-md-6 mb-3">
             <label for="email" class="form-label">Email:</label>
-            <input type="email" class="form-control" id="email" value="{{ user.email }}" disabled>
+            <input type="email" class="form-control input" id="email" value="{{ user.email }}" disabled>
         </div>
         <div class="col-md-6 mb-3">
             <label for="phone" class="form-label">Telefone:</label>
-            <input type="text" class="form-control" id="phone" value="{{ user.phone }}" disabled>
+            <input type="text" class="form-control input" id="phone" value="{{ user.phone }}" disabled>
         </div>
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="zip" class="form-label">CEP:</label>
-                <input type="text" class="form-control" id="zip" value="{{ user.zip }}" disabled>
+                <input type="text" class="form-control input" id="zip" value="{{ user.zip }}" disabled>
             </div>
             <div class="col-md-6 mb-3">
                 <label for="state" class="form-label">Estado:</label>
-                <input type="text" class="form-control" id="state" value="{{ user.state }}" disabled>
+                <input type="text" class="form-control input" id="state" value="{{ user.state }}" disabled>
             </div>
             <div class="col-md-6 mb-3">
                 <label for="address" class="form-label">Endereço:</label>
-                <input type="text" class="form-control" id="address" value="{{ user.address }}" disabled>
+                <input type="text" class="form-control input" id="address" value="{{ user.address }}" disabled>
             </div>
             <div class="col-md-6 mb-3">
                 <label for="numero" class="form-label">Número:</label>
-                <input type="text" class="form-control" id="numero" value="{{ user.numero }}" disabled>
+                <input type="text" class="form-control input" id="numero" value="{{ user.numero }}" disabled>
             </div>
             <div class="col-md-6 mb-3">
-                <button class="btn btn-style col-4 mt-3" id="edit-button" onclick="enableEdit()">Editar</button>
+                <button class="btn btn-style col-2 mt-3" id="edit-button" onclick="editInput()">Editar</button>
+                <button class="btn btn-style col-4 mt-3" id="save" onclick="saveInput()">Savar alterações</button>
             </div>
         </div> 
 </div>
