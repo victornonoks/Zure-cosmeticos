@@ -10,5 +10,5 @@ urlpatterns = [
     path('produtos/', views.produtos, name='produtos'),
     path('logout/', LogoutView.as_view(next_page='home'), name='logout'),
     path('profile/', views.profile, name='profile'),
-    path('produto/<slug:slug>', views.destaque, name='destaque')
+    path('produto/<slug:slug>', views.destaque, name='destaque'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
