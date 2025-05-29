@@ -11,10 +11,13 @@
             </div>
             <!-- Texto -->
             <div class="col-10 col-md-8 col-sm-8 text-start">
-                <h2 class="my-4 pt-4">{{ produto.nome }}</h2>
+                <h2 class="my-4 pt-4 gold">{{ produto.nome }}</h2>
                 <p>
                     {{produto.descricao|linebreaks}}
                 </p>
+                <button class="btn btn-style col-2" type="button">
+                    Comprar <i class="bi bi-cart"></i> 
+                </button>
             </div>
             <!-- Titulo + texto informativo -->
             <div class="col-10 col-md-8 col-sm-8 mt-4 pt-4 text-start">
@@ -34,13 +37,25 @@
 <div class="accordion" id="accordion-info">
     <div class="accordion-item">
         <h2 class="accordion-header">
-            <button class="accordion-button bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#beneficios" aria-expanded="false" aria-controls="#beneficios">
+            <button class="accordion-button bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#beneficios" aria-expanded="false" aria-controls="#beneficios">
                 Beneficios
             </button>
         </h2>
         <div id="beneficios" class="accordion-collapse collapse" data-bs-parent="#accordion-info">
             <div class="accordion-body">
                 {{produto.beneficios|linebreaks}}
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#modo_de_uso" arial-expanded="true" arial-contols="#modo_de_uso">
+                Modo de uso
+            </button>
+        </h2>
+        <div id="modo_de_uso" class="accordion-collapse collapse" data-bs-parent="#accordion-info">
+            <div class="accordion-body">    
+                {{produto.modo_de_uso}}
             </div>
         </div>
     </div>
