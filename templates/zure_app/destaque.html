@@ -1,17 +1,46 @@
 {% extends "zure_app/home.html" %}
 {%load static%}
 {%block content%}
+
 <div class="container-fluid text-center mt-5 bg-banner">
     <div class="container">
-        <div class="row  justify-content-center">
+        <div class="row justify-content-center align-items-center">
             <!-- Imagem -->
             <div class="col-12 col-md-4 col-sm-8 mt-4 pt-4">
                 <img src="{{ produto.foto.url }}" class="img-fluid rounded mb-4" alt="{{ produto.nome }}">
             </div>
             <!-- Texto -->
-            <div class="col-10 col-md-8 col-sm-8">
+            <div class="col-10 col-md-8 col-sm-8 text-start">
                 <h2 class="my-4 pt-4">{{ produto.nome }}</h2>
-                <p>{{ produto.descricao }}</p>
+                <p>
+                    {{produto.descricao|linebreaks}}
+                </p>
+            </div>
+            <!-- Titulo + texto informativo -->
+            <div class="col-10 col-md-8 col-sm-8 mt-4 pt-4 text-start">
+                <h2 class="gold"> {{produto.titulo_informativo}} </h2>
+                <p> {{produto.informativo|linebreaks}} </p>
+            </div>
+            <!-- imagem nova a direita -->
+             <div class="col-12 col-md-4 col-sm-8 mt-4 pt-4">
+                <img src="{{ produto.foto.url }}" class="img-fluid rounded mb-4" alt="{{ produto.nome }}">
+             </div>
+        </div>
+    </div>
+</div>
+
+<!-- accordion com modo de uso e  beneficios do produto -->
+
+<div class="accordion" id="accordion-info">
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#beneficios" aria-expanded="false" aria-controls="#beneficios">
+                Beneficios
+            </button>
+        </h2>
+        <div id="beneficios" class="accordion-collapse collapse" data-bs-parent="#accordion-info">
+            <div class="accordion-body">
+                {{produto.beneficios|linebreaks}}
             </div>
         </div>
     </div>
