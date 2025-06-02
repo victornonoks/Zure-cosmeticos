@@ -128,244 +128,242 @@
 </div>
 
 <body>
-   {% block content %}
-  <div class="container-fluid" id="div-principal">
-    {% comment %} Seção do Banner {% endcomment %}
-    <div class="container-fluid g-0 position-relative" id="div-banner">
-      <img id="banner">
-      <div class="position-absolute" id="div-texto-banner">
-        <h1 class="text-light">Zure <br>Cosméticos</h1>
-        <p class="text-light">Realce sua beleza natural com nossos produtos de alta performance.</p>
-        <a href="{% url 'produtos' %}" class="btn btn-style position-absolute" id="btn-banner">Ver Produtos</a>
+{% block content %}
+<div id="smooth-wrapper">
+  <div id="smooth-content">
+    <div class="container-fluid" id="div-principal">
+      {% comment %} Seção do Banner {% endcomment %}
+      <div class="container-fluid g-0 position-relative" id="div-banner">
+        <img id="banner">
+        <div class="position-absolute" id="div-texto-banner">
+          <h1 class="text-light titulo-banner">Zure <br>Cosméticos</h1>
+          <p class="text-light paragrafo-banner">Realce sua beleza natural com nossos produtos de alta performance.</p>
+          <a href="{% url 'produtos' %}" class="btn btn-style position-absolute btn-banner" id="btn-banner">Ver Produtos</a>
+        </div>
       </div>
-    </div>
-    {% comment %} Final da seção do Banner {% endcomment %}
+      {% comment %} Final da seção do Banner {% endcomment %}
 
-    {% comment %} Seção Sobre Nós {% endcomment %}
-    <div class="container-fluid d-flex flex-column container-fluid text-center align-items-center bg-light" id="sobre">
-      <h2 class="fw-bold my-3 mt-4">Sobre Nós</h2> 
-      <p class="mb-1 col-10">Há mais de 5 anos no mercado, a Zure Cosméticos vem construindo uma trajetória sólida, 
-      baseada em valores familiares, paixão pela beleza e compromisso com a excelência.
-      </p>
-      <p class="mb-1 col-10">
-      Nascida do sonho de uma família empreendedora, nossa marca é fundada e gerida por mãe e filhos, que unem 
-      experiência, sensibilidade e visão de futuro para entregar ao mercado produtos que realmente fazem a 
-      diferença no dia a dia de quem cuida dos cabelos.
-      </p>
-      <p class="mb-1 col-10">
-      Somos uma empresa 100% brasileira, orgulhosa de suas origens e da confiança que conquistamos em milhares 
-      de lares por todo o país. Acreditamos no poder do cuidado diário, da rotina que se transforma em um 
-      momento de autoestima, e da beleza que vai muito além da estética — é também saúde, bem-estar e identidade.
-      </p>
-      <p class="mb-5 col-10">
-      Na Zure, não vendemos apenas cosméticos — oferecemos experiências. Cada embalagem carrega carinho, 
-      inovação e responsabilidade. É assim que nos posicionamos no mercado: como uma marca humana, acessível e 
-      comprometida com a transformação de rotinas em rituais de cuidado pessoal.
-      </p>
+      {% comment %} Seção Sobre Nós {% endcomment %}
+      <div class="container-fluid d-flex flex-column container-fluid text-center align-items-center bg-light" id="sobre">
+        <h2 class="fw-bold my-3 mt-4 titulo-sobre">Sobre Nós</h2> 
+        <p class="mb-1 col-10 p-sobre">Há mais de 5 anos no mercado, a Zure Cosméticos vem construindo uma trajetória sólida, 
+        baseada em valores familiares, paixão pela beleza e compromisso com a excelência.
+        </p>
+        <p class="mb-1 col-10 p-sobre">
+        Nascida do sonho de uma família empreendedora, nossa marca é fundada e gerida por mãe e filhos, que unem 
+        experiência, sensibilidade e visão de futuro para entregar ao mercado produtos que realmente fazem a 
+        diferença no dia a dia de quem cuida dos cabelos.
+        </p>
+        <p class="mb-1 col-10 p-sobre">
+        Somos uma empresa 100% brasileira, orgulhosa de suas origens e da confiança que conquistamos em milhares 
+        de lares por todo o país. Acreditamos no poder do cuidado diário, da rotina que se transforma em um 
+        momento de autoestima, e da beleza que vai muito além da estética — é também saúde, bem-estar e identidade.
+        </p>
+        <p class="mb-5 col-10 p-sobre">
+        Na Zure, não vendemos apenas cosméticos — oferecemos experiências. Cada embalagem carrega carinho, 
+        inovação e responsabilidade. É assim que nos posicionamos no mercado: como uma marca humana, acessível e 
+        comprometida com a transformação de rotinas em rituais de cuidado pessoal.
+        </p>
 
-    </div>
-    {% comment %} Final da seção Sobre Nós {% endcomment %}
+      </div>
+      {% comment %} Final da seção Sobre Nós {% endcomment %}
 
-    {% comment %} Seção de produtos em destaque {% endcomment %}
-    <div class="container-fluid d-flex flex-column text-center align-items-center" id="destaques">
-      <h2 class="fw-bold my-3">Destaques</h2>
-      <div class="row justify-content-center">
-        {% for produto in destaques %}
-          <div class="col-6 col-sm-8 col-md-4 col-lg-3 mb-4">
-            <div class="card h-100 shadow-sm">
-              <a href="{% url 'destaque' produto.slug %}">
-                <img src="{{ produto.foto.url }}" class="card-img-top" alt="{{ produto.nome }}">
-              </a>
-              <div class="card-body">
-                <h5 class="card-title fw-light">{{ produto.nome }}</h5>
-                <p class="card-text fw-bold">R$ {{ produto.preco }}</p>
-                <a href="#" class="btn btn-style btn-sm w-100">Comprar <i class="bi bi-cart"></i></a>
+      {% comment %} Seção de produtos em destaque {% endcomment %}
+      <div class="container-fluid d-flex flex-column text-center align-items-center" id="destaques">
+        <h2 class="fw-bold my-3 titulo-destaques">Destaques</h2>
+        <div class="row justify-content-center produtos-destaques">
+          {% for produto in destaques %}
+            <div class="col-6 col-sm-8 col-md-4 col-lg-3 mb-4">
+              <div class="card h-100 shadow-sm">
+                <a href="{% url 'destaque' produto.slug %}">
+                  <img src="{{ produto.foto.url }}" class="card-img-top" alt="{{ produto.nome }}">
+                </a>
+                <div class="card-body">
+                  <h5 class="card-title fw-light">{{ produto.nome }}</h5>
+                  <p class="card-text fw-bold">R$ {{ produto.preco }}</p>
+                  <a href="#" class="btn btn-style btn-sm w-100">Comprar <i class="bi bi-cart"></i></a>
+                </div>
               </div>
             </div>
-          </div>
-        {% endfor %}
-      </div>
-    </div>
-    {% comment %} final Seção de produtos em destaque {% endcomment %}
-
-    {% comment %} Seção do Video de apresentação {% endcomment %}
-    <section class="bg-banner">
-      <div class="container my-5">
-        <div class="row align-items-center">
-          
-          <!-- Texto à esquerda -->
-          <div class="col-md-6 text-center text-md-start">
-            <h2 class="fw-bold mb-3 text-center text-md-start gold">Leave-in Termoativado</h2>
-            <p>
-            O Leave-in Termoativado da Zure Cosméticos é a escolha ideal para quem utiliza 
-            ferramentas térmicas no dia a dia. Sua fórmula avançada <strong>protege os fios 
-            contra temperaturas de até 230°C</strong>, ao mesmo tempo em que hidrata 
-            profundamente e reduz o frizz.
-            <br>
-            Com textura leve e de rápida absorção, ele deixa os cabelos mais macios, 
-            brilhantes e fáceis de modelar — sem pesar e sem necessidade de enxágue.
-            </p>
-            <ul class="list-unstyled">
-              <li>• Proteção térmica até 230°C</li>
-              <li>• Reduz frizz e promove brilho instantâneo</li>
-              <li>• Sem enxágue, ideal para uso diário</li>
-              <li>• Facilita a escovação e modelagem</li>
-              <li>• Indicado para todos os tipos de cabelo</li>
-            </ul>
-          </div>
-
-          <!-- Vídeo à direita -->
-          <div class="col-md-6 text-center">
-            <video controls autoplay muted loop playsinline class="video-vertical my-4">
-              <source src="{% static 'videos/leave-in.mp4' %}" type="video/mp4">
-              Seu navegador não suporta vídeo HTML5.
-            </video>
-          </div>
-
+          {% endfor %}
         </div>
       </div>
-    </section>
-    {% comment %} Final seção do Video de apresentação {% endcomment %}
+      {% comment %} final Seção de produtos em destaque {% endcomment %}
 
+      {% comment %} Seção do Video de apresentação {% endcomment %}
+      <section class="bg-banner">
+        <div class="container my-5">
+          <div class="row align-items-center">
+              
+            <!-- Texto à esquerda -->
+            <div class="col-md-6 text-center text-md-start">
+              <h2 class="fw-bold mb-3 text-center text-md-start gold titulo-video">Leave-in Termoativado</h2>
+              <p class="texto-video">
+                O Leave-in Termoativado da Zure Cosméticos é a escolha ideal para quem utiliza 
+                ferramentas térmicas no dia a dia. Sua fórmula avançada <strong>protege os fios 
+                contra temperaturas de até 230°C</strong>, ao mesmo tempo em que hidrata 
+                profundamente e reduz o frizz.
+                <br>
+                Com textura leve e de rápida absorção, ele deixa os cabelos mais macios, 
+                brilhantes e fáceis de modelar — sem pesar e sem necessidade de enxágue.
+              </p>
+              <ul class="list-unstyled lista-video">
+                <li>• Proteção térmica até 230°C</li>
+                <li>• Reduz frizz e promove brilho instantâneo</li>
+                <li>• Sem enxágue, ideal para uso diário</li>
+                <li>• Facilita a escovação e modelagem</li>
+                <li>• Indicado para todos os tipos de cabelo</li>
+              </ul>
+            </div>
 
-    {% comment %} Seção dos produtos {% endcomment %}
-    <div class="text-center" id="div-produtos">
-      <h2 class="fw-bold mt-4 mb-3">Nossos Produtos</h2>
-      <ul class="list-unstyled d-flex justify-content-center gap-4" id="ul-produtos">
-        <li><a class="text-dark text-decoration-none"href="">Leave-in</a></li>
-        <li><a class="text-dark text-decoration-none"href="">Óleo de argan</a></li>
-        <li><a class="text-dark text-decoration-none"href="">Kit Matizador</a></li>
-        <li><a class="text-dark text-decoration-none"href="">Kit Café</a></li>
-      </ul>
-    </div>
-    <div class="container-fluid d-flex flex-column text-center align-items-center" id="div-produtos">
-      <div class="row justify-content-center">
-        {% for produto in produtos %}
-          <div class="col-6 col-sm-8 col-md-4 col-lg-3 mb-4">
-            <div class="card h-100 shadow-sm">
-              <a href="{% url 'destaque' produto.slug %}">
-                <img src="{{ produto.foto.url }}" class="card-img-top" alt="{{ produto.nome }}">
-              </a>
-              <div class="card-body">
-                <h5 class="card-title fw-light">{{ produto.nome }}</h5>
-                <p class="card-text fw-bold">R$ {{ produto.preco }}</p>
-                <a href="#" class="btn btn-style btn-sm w-100">Comprar <i class="bi bi-cart"></i></a>
+            <!-- Vídeo à direita -->
+            <div class="col-md-6 text-center video">
+              <video controls autoplay muted loop playsinline class="video-vertical my-4">
+                <source src="{% static 'videos/leave-in.mp4' %}" type="video/mp4">
+                Seu navegador não suporta vídeo HTML5.
+              </video>
+            </div>
+          </div>
+        </div>
+      </section>
+      {% comment %} Final seção do Video de apresentação {% endcomment %}
+
+      {% comment %} Seção dos produtos {% endcomment %}
+      <div class="text-center produtos-texto" id="div-produtos">
+        <h2 class="fw-bold mt-4 mb-3">Nossos Produtos</h2>
+        <ul class="list-unstyled d-flex justify-content-center gap-4" id="ul-produtos">
+          <li><a class="text-dark text-decoration-none"href="">Leave-in</a></li>
+          <li><a class="text-dark text-decoration-none"href="">Óleo de argan</a></li>
+          <li><a class="text-dark text-decoration-none"href="">Kit Matizador</a></li>
+          <li><a class="text-dark text-decoration-none"href="">Kit Café</a></li>
+        </ul>
+      </div>
+      <div class="container-fluid d-flex flex-column text-center align-items-center" id="div-produtos">
+        <div class="row justify-content-center produtos">
+          {% for produto in produtos %}
+            <div class="col-6 col-sm-8 col-md-4 col-lg-3 mb-4">
+              <div class="card h-100 shadow-sm">
+                <a href="{% url 'destaque' produto.slug %}">
+                  <img src="{{ produto.foto.url }}" class="card-img-top" alt="{{ produto.nome }}">
+                </a>
+                <div class="card-body">
+                  <h5 class="card-title fw-light">{{ produto.nome }}</h5>
+                  <p class="card-text fw-bold">R$ {{ produto.preco }}</p>
+                  <a href="#" class="btn btn-style btn-sm w-100">Comprar <i class="bi bi-cart"></i></a>
+                </div>
               </div>
             </div>
-          </div>
-        {% endfor %}
-      </div>
-    {% comment %} Seção banner de produto {% endcomment %}
-
-    <div class="container m-5">
-      <div class="row g-4">
-        <div class="col-md-6">
-          <a href="{% url 'home' %}">
-            <img src="{% static 'img/Óleo-banner.jpeg' %}" class="img-fluid rounded shadow" alt="Banner 1">
-          </a>
+          {% endfor %}
         </div>
-        <div class="col-md-6">
-          <a href="{% url 'home' %}">
-            <img src="{% static 'img/Leavein-banner.jpeg' %}" class="img-fluid rounded shadow" alt="Banner 2">
-          </a>
-        </div>
-      </div>
-    </div>
-    {% comment %} Seção de comentarios dos clientes {% endcomment %}
-    
-    <section class="container my-5">
-      <h2 class="text-center mb-4">O que dizem nossos clientes</h2>
-      
-      <div class="row g-4 justify-content-center">
-        {% comment %} Card 1 {% endcomment %}
-        <div class="col-6 col-sm-6 col-md-5 col-lg-4 mb-4">
-          <div class="card h-100 shadow-sm">
-            <img src="{% static 'img/Avaliação 1.png' %}" class="card-img-top" alt="Avaliação 1">
-            <div class="card-body text-center">
-              <p class="card-text">"Produtos maravilhosos, deixou meu cabelo incrível!"</p>
-              <small class="text-muted">— Cliente verificado</small>
+        {% comment %} Seção banner de produto {% endcomment %}
+        <div class="container m-5">
+          <div class="row g-4">
+            <div class="col-md-6">
+              <a href="{% url 'home' %}">
+                <img src="{% static 'img/Óleo-banner.jpeg' %}" class="img-fluid rounded shadow" alt="Banner 1">
+              </a>
+            </div>
+            <div class="col-md-6">
+              <a href="{% url 'home' %}">
+                <img src="{% static 'img/Leavein-banner.jpeg' %}" class="img-fluid rounded shadow" alt="Banner 2">
+              </a>
             </div>
           </div>
         </div>
-
-        {% comment %} Card 2 {% endcomment %}
-        <div class="col-6 col-sm-6 col-md-5 col-lg-4 mb-4">
-          <div class="card h-100 shadow-sm">
-            <img src="{% static 'img/Avaliação 2.png' %}" class="card-img-top" alt="Avaliação 2">
-            <div class="card-body text-center">
-              <p class="card-text">"Chegou super rápido, embalagem impecável!"</p>
-              <small class="text-muted">— Cliente verificado</small>
-            </div>
-          </div>
-        </div>
-
-        {% comment %} Card 3 {% endcomment %}
-        <div class="col-6 col-sm-6 col-md-5 col-lg-4 mb-4">
-          <div class="card h-100 shadow-sm">
-            <img src="{% static 'img/Avaliação 3.png' %}" class="card-img-top" alt="Avaliação 3">
-            <div class="card-body text-center">
-              <p class="card-text">"Simplesmente apaixonada por tudo, recomendo demais."</p>
-              <small class="text-muted">— Cliente verificado</small>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    {% comment %} Final de seção de comentarios dos clientes {% endcomment %}
-
-    {% comment %} conheça nossos fundadores 
-    <div class="container my-5 text-center">
-      <h2 class="mb-5">Conheça nossos fundadores</h2>
-      <div class="row align-items-center">
+        {% comment %} Seção de comentarios dos clientes {% endcomment %}
         
-        <!-- Coluna da pirâmide -->
-        <div class="col-md-6 d-flex flex-column align-items-center">
-          <!-- Círculo do topo -->
-          <div class="mb-4 text-center">
-            <img src="{% static 'img/elisete.jpg' %}" alt="CEO" class="founder-img mb-2">
-            <p class="founder-info mb-0 fw-bold">Elisete Martines</p>
-            <small class="text-muted">CEO da Zure Cosméticos</small>
-          </div>
-          <!-- Círculos da base -->
-          <div class="d-flex justify-content-center gap-4 text-center">
-            
-            <div>
-              <img src="{% static 'img/fundador1.jpeg' %}" alt="Fundador 1" class="founder-img mb-2">
-              <p class="founder-info mb-0 fw-bold">Victor Martines</p>
-              <small class="text-muted">Desenvolvedor 3D e programador</small>
+        <section class="container my-5">
+          <h2 class="text-center mb-4">O que dizem nossos clientes</h2>
+          <div class="row g-4 justify-content-center">
+            {% comment %} Card 1 {% endcomment %}
+            <div class="col-6 col-sm-6 col-md-5 col-lg-4 mb-4">
+              <div class="card h-100 shadow-sm">
+                <img src="{% static 'img/Avaliação 1.png' %}" class="card-img-top" alt="Avaliação 1">
+                <div class="card-body text-center">
+                  <p class="card-text">"Produtos maravilhosos, deixou meu cabelo incrível!"</p>
+                  <small class="text-muted">— Cliente verificado</small>
+                </div>
+              </div>
             </div>
-            
-            <div>
-              <img src="{% static 'img/fundador2.jpg' %}" alt="Fundador 2" class="founder-img mb-2">
-              <p class="founder-info mb-0 fw-bold">Priscila Martines</p>
-              <small class="text-muted">Diretor Comercial</small>
-            </div>
-            
-            <div>
-              <img src="{% static 'img/fundador3.jpg' %}" alt="Fundador 3" class="founder-img mb-2">
-              <p class="founder-info mb-0 fw-bold">Thiago Martines</p>
-              <small class="text-muted">Marketing</small>
-            </div>
-            
-          </div>
-        </div>
 
-      <!-- Coluna dos textos -->
-        <div class="col-md-6 d-flex flex-column gap-3 align-items-start mt-5">
-          <p class="descrição-fundadores">
-            "A Zure Cosméticos é mais do que uma marca, é a realização de um sonho familiar. 
-            Cada produto é desenvolvido com amor e dedicação, refletindo nossa paixão pela beleza 
-            e pelo cuidado. Estamos aqui para transformar sua rotina de beleza em um momento 
-            especial e único."
-          </p>
+            {% comment %} Card 2 {% endcomment %}
+            <div class="col-6 col-sm-6 col-md-5 col-lg-4 mb-4">
+              <div class="card h-100 shadow-sm">
+                <img src="{% static 'img/Avaliação 2.png' %}" class="card-img-top" alt="Avaliação 2">
+                <div class="card-body text-center">
+                  <p class="card-text">"Chegou super rápido, embalagem impecável!"</p>
+                  <small class="text-muted">— Cliente verificado</small>
+                </div>
+              </div>
+            </div>
+
+            {% comment %} Card 3 {% endcomment %}
+            <div class="col-6 col-sm-6 col-md-5 col-lg-4 mb-4">
+              <div class="card h-100 shadow-sm">
+                <img src="{% static 'img/Avaliação 3.png' %}" class="card-img-top" alt="Avaliação 3">
+                <div class="card-body text-center">
+                  <p class="card-text">"Simplesmente apaixonada por tudo, recomendo demais."</p>
+                  <small class="text-muted">— Cliente verificado</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        {% comment %} Final de seção de comentarios dos clientes {% endcomment %}
+
+        {% comment %} conheça nossos fundadores 
+        <div class="container my-5 text-center">
+          <h2 class="mb-5">Conheça nossos fundadores</h2>
+          <div class="row align-items-center">
+            
+            <!-- Coluna da pirâmide -->
+            <div class="col-md-6 d-flex flex-column align-items-center">
+              <!-- Círculo do topo -->
+              <div class="mb-4 text-center">
+                <img src="{% static 'img/elisete.jpg' %}" alt="CEO" class="founder-img mb-2">
+                <p class="founder-info mb-0 fw-bold">Elisete Martines</p>
+                <small class="text-muted">CEO da Zure Cosméticos</small>
+              </div>
+              <!-- Círculos da base -->
+              <div class="d-flex justify-content-center gap-4 text-center">
+                
+                <div>
+                  <img src="{% static 'img/fundador1.jpeg' %}" alt="Fundador 1" class="founder-img mb-2">
+                  <p class="founder-info mb-0 fw-bold">Victor Martines</p>
+                  <small class="text-muted">Desenvolvedor 3D e programador</small>
+                </div>
+                
+                <div>
+                  <img src="{% static 'img/fundador2.jpg' %}" alt="Fundador 2" class="founder-img mb-2">
+                  <p class="founder-info mb-0 fw-bold">Priscila Martines</p>
+                  <small class="text-muted">Diretor Comercial</small>
+                </div>
+                
+                <div>
+                  <img src="{% static 'img/fundador3.jpg' %}" alt="Fundador 3" class="founder-img mb-2">
+                  <p class="founder-info mb-0 fw-bold">Thiago Martines</p>
+                  <small class="text-muted">Marketing</small>
+                </div>
+                
+              </div>
+            </div>
+
+          <!-- Coluna dos textos -->
+            <div class="col-md-6 d-flex flex-column gap-3 align-items-start mt-5">
+              <p class="descrição-fundadores">
+                "A Zure Cosméticos é mais do que uma marca, é a realização de um sonho familiar. 
+                Cada produto é desenvolvido com amor e dedicação, refletindo nossa paixão pela beleza 
+                e pelo cuidado. Estamos aqui para transformar sua rotina de beleza em um momento 
+                especial e único."
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
+        {% endcomment %}
     </div>
-    {% endcomment %}
-
-    {% endblock %}
   </div>
+</div>
+{% endblock %}
 </body>
 
 {% comment %} footer {% endcomment %}
@@ -392,6 +390,10 @@
   <hr>
   <p class="mb-0 text-center">© 2023 Zure Cosméticos. Todos os direitos reservados.</p>
 </footer>
+<script src="{% static 'js/gsap.js' %}" rel="gsap"></script>
 <script src="{% static 'js/script.js' %} " rel="script"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
 </html>
