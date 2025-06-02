@@ -33,6 +33,8 @@ AUTHENTICATION_BACKENDS = [
      'allauth.account.auth_backends.AuthenticationBackend',
  ]
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 
 ACCOUNT_LOGIN_METHODS = {'email'}
 ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
@@ -40,6 +42,7 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 LOGIN_REDIRECT_URL = '/'
 ACCOUNT_LOGIN_REDIRECT_URL = '/'
+ACCOUNT_SIGNUP_REDIRECT_URL = '/profile'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 
 
